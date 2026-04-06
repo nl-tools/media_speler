@@ -25,11 +25,11 @@ for file_path in files:
     # Skip if thumbnail already exists
     if not os.path.exists(thumb_path):
         subprocess.run([
-            "ffmpeg",
-            "-ss", THUMB_TIME,  # time to pick frame
+            os.path.join("tools", "ffmpeg", "ffmpeg.exe"),
+            "-ss", THUMB_TIME,
             "-i", file_path,
             "-vframes", "1",
-            "-q:v", "2",       # quality of JPEG
+            "-q:v", "2",
             thumb_path
         ])
         print(f"Thumbnail created: {thumb_path}")

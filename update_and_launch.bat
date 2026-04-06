@@ -1,5 +1,7 @@
 @echo off
 cd /d "%~dp0"
-git pull origin main
-python generate_list.py
+
+tools\git\cmd\git.exe pull origin main
+tools\python\python.exe generate_list.py
+
 start "" index.html
