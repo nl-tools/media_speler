@@ -25,7 +25,7 @@ for file_path in files:
     # Skip if thumbnail already exists
     if not os.path.exists(thumb_path):
         subprocess.run([
-            "ffmpeg",
+            r"C:\ffmpeg\bin\ffmpeg.exe",
             "-ss", THUMB_TIME,  # time to pick frame
             "-i", file_path,
             "-vframes", "1",
