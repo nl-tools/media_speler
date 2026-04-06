@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 id="page-title">My Movies</h1>
+    <div id="videos"></div>
+
+    <!-- Fullscreen container -->
+    <div id="fullscreen-video" style="display:none;">
+        <video controls id="player"></video>
+        <button onclick="closeFullscreen()">Terug</button>
+    </div>
+
+    <script>
+        fetch('videos.json')
+            .then(res => res.json())
+            .then(files => {
+                const container = document.getElementById('videos');
+
+                files.forEach(file => {
+                    const baseName = file.split('/').pop().split('.').slice(0, -1).join('.');
+                    
+                    const card = document.createElement('div');
+                    card.classList.add('video-card');
+
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = `thumbnails/${baseName}.jpg`;
+                    thumbnail.alt = baseName;
+
+                    const title = document.createElement('h2');
+                    title.textContent = baseName;
+
+                    card.appendChild(title);
+                    card.appendChild(thumbnail);
+                    container.appendChild(card);
+
+                    // Click to open fullscreen video
+                    card.addEventListener('click', () => {
+                        const player = document.getElementById('player');
+                        player.src = file;
+                        player.play();
+                        document.getElementById('fullscreen-video').style.display = 'flex';
+                    });
+                });
+            });
+
+        function closeFullscreen() {
+            const player = document.getElementById('player');
+            player.pause();
+            player.src = '';
+            document.getElementById('fullscreen-video').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
