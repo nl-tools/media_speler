@@ -1,6 +1,15 @@
 @echo off
 cd /d "%~dp0"
 
-git pull origin main
+echo Installing/updating Python dependencies...
+python -m pip install --upgrade pip
+python -m pip install -r RangeHTTPServer
+
+echo Updating video list...
 python generate_list.py
-start "" index.html
+
+echo Starting video server...
+python -m RangeHTTPServer 8000
+
+echo Starting browser...
+start "" http://localhost:8000
