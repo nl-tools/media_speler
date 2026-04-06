@@ -3,7 +3,7 @@ import json
 import subprocess
 
 # Paths
-VIDEO_DIR = r"C:\Movies"
+VIDEO_DIR = r"C:\movies\videos"
 THUMB_DIR = "thumbnails"
 THUMB_TIME = "00:00:30"
 
@@ -25,11 +25,11 @@ for file_path in files:
     # Skip if thumbnail already exists
     if not os.path.exists(thumb_path):
         subprocess.run([
-            os.path.join("tools", "ffmpeg", "ffmpeg.exe"),
-            "-ss", THUMB_TIME,
+            "ffmpeg",
+            "-ss", THUMB_TIME,  # time to pick frame
             "-i", file_path,
             "-vframes", "1",
-            "-q:v", "2",
+            "-q:v", "2",       # quality of JPEG
             thumb_path
         ])
         print(f"Thumbnail created: {thumb_path}")
