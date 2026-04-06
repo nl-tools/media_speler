@@ -3,7 +3,7 @@ import json
 import subprocess
 
 # Paths
-VIDEO_DIR = r"C:\movies\videos"
+VIDEO_DIR = "videos"
 THUMB_DIR = "thumbnails"
 THUMB_TIME = "00:00:30"
 
