@@ -1,0 +1,8 @@
+Requirements:
+
+- https://git-scm.com/install/windows
+- https://www.python.org/downloads/windows/
+- https://www.gyan.dev/ffmpeg/builds/
+
+Commands:
+pip install RangeHTTPServer
