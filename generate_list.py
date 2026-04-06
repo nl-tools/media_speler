@@ -3,9 +3,9 @@ import json
 import subprocess
 
 # Paths
-VIDEO_DIR = "videos/movies"
+VIDEO_DIR = r"C:\Movies"
 THUMB_DIR = "thumbnails"
-THUMB_TIME = "00:00:30"  # pick a frame 10 seconds into the video
+THUMB_TIME = "00:00:30"
 
 # Create thumbnails folder if it doesn't exist
 os.makedirs(THUMB_DIR, exist_ok=True)
